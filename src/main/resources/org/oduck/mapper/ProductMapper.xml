@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.oduck.mapper.ProductMapper">
+<select id="listProduct" resultType="org.oduck.domain.ProductVO">
+SELECT * FROM TBL_PRODUCT WHERE PRO_DELFLAG = 'Y' ORDER BY PRO_CODE DESC
+</select>
+
+<select id="detailProduct" parameterType="Integer" resultType="org.oduck.domain.ProductVO">
+SELECT * FROM TBL_PRODUCT WHERE PRO_DELFLAG = 'Y' AND PRO_CODE = #{pro_code}
+</select>
+
+<insert id="insertProduct" parameterType="org.oduck.domain.ProductVO">
+INSERT INTO TBL_PRODUCT
+(PRO_CODE, PRO_PRICE, PRO_TYPE, PRO_DATE, SELLER_NAME, PRO_WEIGHT, PRO_QUANTITY) 
+VALUES
+(SEQ_PRODUCT.NEXTVAL, #{pro_price}, #{pro_type}, #{pro_date}, #{seller_name}, #{pro_weight}, #{pro_quantity})
+</insert>
+
+</mapper>
