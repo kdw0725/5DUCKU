@@ -19,4 +19,10 @@ VALUES
 (SEQ_PRODUCT.NEXTVAL, #{pro_price}, #{pro_type}, #{pro_date}, #{seller_name}, #{pro_weight}, #{pro_quantity})
 </insert>
 
+<insert id="insertFile" parameterType="org.oduck.domain.ProductFileVO">
+INSERT INTO TBL_FILE
+(FILE_NO, PRO_CODE, FILE_NAME, FILE_ORI_NAME, FILE_URL)
+VALUES
+(SEQ_FILE.NEXTVAL, SEQ_PRODUCT.CURRVAL, #{file_name}, #{file_oriname}, #{file_url})
+</insert>
 </mapper>
