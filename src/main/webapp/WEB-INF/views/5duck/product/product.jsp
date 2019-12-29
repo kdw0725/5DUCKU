@@ -265,7 +265,8 @@ $(document).ready(function(){
 			"pro_type" : "",
 			"pro_status" : "",
 			"pro_date" : "",
-			"pro_delflag" : ""
+			"pro_delflag" : "",
+			"FILE_NAME":""
 	};
 	
 	$.ajax({
@@ -277,16 +278,19 @@ $(document).ready(function(){
         beforeSend : function(xhr){
         },
         success : function(list) {
+        	console.log(list);
+        	console.log(list[1].PRO_PRICE);
             for(var i=0;i<10;i++){
-            	productData.pro_code = list[i].pro_code;
-            	productData.seller_name = list[i].seller_name;
-            	productData.pro_quantity = list[i].pro_quantity;
-            	productData.pro_price = list[i].pro_price;
-            	productData.pro_discount = list[i].pro_discount;
-            	productData.pro_type = list[i].pro_type;
-            	productData.pro_status = list[i].pro_status;
-            	productData.pro_date = list[i].pro_date;
-            	productData.pro_ship = list[i].pro_ship;
+            	productData.pro_code = list[i].PRO_CODE;
+            	productData.seller_name = list[i].SELLER_NAME;
+            	productData.pro_quantity = list[i].PRO_QUANTITY;
+            	productData.pro_price = list[i].PRO_PRICE;
+            	productData.pro_discount = list[i].PRO_DISCOUNT;
+            	productData.pro_type = list[i].PRO_TYPE;
+            	productData.pro_status = list[i].PRO_STATUS;
+            	productData.pro_date = list[i].PRO_DATE;
+            	productData.pro_ship = list[i].PRO_SHIP;
+            	productData.file_name = list[i].FILE_NAME;
             	
             	var div = document.createElement('div');
             	
@@ -294,7 +298,7 @@ $(document).ready(function(){
             		<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">\
 					<div class="block2">\
 						<div class="block2-pic hov-img0" >\
-							<img src="/mainresources/bootstrap/images/product-02.jpg" alt="IMG-PRODUCT">\
+							<img src="/mainresources/upload/'+productData.file_name+'" alt="IMG-PRODUCT" style="width : 315px; height : 390.06px; display : flex ">\
 							<a href="/product/'+productData.pro_code+'" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" onclick="modal()">\
 								Go To Detail\
 							</a>\

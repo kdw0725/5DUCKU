@@ -25,8 +25,6 @@ function projectInsert(){
 		success : function(result){
 			if(result==1){
 				fileInsert();
-				alert("등록이 되었습니다.");
-				location.href="/product";
 			}
 			else{
 				alert("error");
@@ -125,7 +123,8 @@ function fileInsert(){
 			  xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
 		},
 		success : function(){
-			alert("성공");
+			alert("등록이 되었습니다.");
+			location.href="/product";
 		},
 		error : function(request,status,error){
 			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);

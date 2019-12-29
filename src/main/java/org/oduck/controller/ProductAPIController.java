@@ -1,6 +1,7 @@
 package org.oduck.controller;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -28,7 +29,7 @@ public class ProductAPIController {
 	ProductMapper productMapper;
 	
 	@GetMapping("/productList")
-    public List<ProductVO> product() {
+    public List<HashMap<String,Object>> product() {
 		return productMapper.listProduct();
     }
 	
@@ -43,9 +44,9 @@ public class ProductAPIController {
 	}
 	
 	@PostMapping("/fileUpload")
-	public void fileUpload(MultipartHttpServletRequest request, ProductFileVO productFileVO) throws Exception{
+	public int fileUpload(MultipartHttpServletRequest request, ProductFileVO productFileVO) throws Exception{
 		Map<String, MultipartFile> test = request.getFileMap();
-		for(int i=1;i<test.size();i++) {
+		for(int i=1;i<test.size()+1;i++) {
 			String sourceFileName = test.get("file"+i).getOriginalFilename();
 			String sourceFileNameExtension =  FilenameUtils.getExtension(sourceFileName).toLowerCase();
 			File destinationFile;
@@ -58,12 +59,13 @@ public class ProductAPIController {
 			}while(destinationFile.exists());
 			destinationFile.getParentFile().mkdirs();
 			test.get("file"+i).transferTo(destinationFile);
-			
+			System.out.println(i);
 			productFileVO.setFile_name(destinationFileName);
 			productFileVO.setFile_oriname(sourceFileName);
 			productFileVO.setFile_url(fileURL);
 			productMapper.insertFile(productFileVO);
 		}
+		return 1;
 	}
 	
 }
