@@ -34,7 +34,7 @@ public class ProductAPIController {
     }
 	
 	@GetMapping("/productDetail/{pro_code}")
-	public ProductVO productDetail(@PathVariable int pro_code) {
+	public List<HashMap<String,Object>> productDetail(@PathVariable int pro_code) {
 		return productMapper.detailProduct(pro_code);
 	}
 	

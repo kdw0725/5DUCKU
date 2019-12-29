@@ -8,7 +8,7 @@ import org.oduck.domain.ProductVO;
 
 public interface ProductMapper {
 	public List<HashMap<String, Object>> listProduct();
-	public ProductVO detailProduct(int pro_code);
+	public List<HashMap<String,Object>> detailProduct(int pro_code);
 	public int insertProduct(ProductVO productVO);
 	public int insertFile(ProductFileVO productFileVO);
 }

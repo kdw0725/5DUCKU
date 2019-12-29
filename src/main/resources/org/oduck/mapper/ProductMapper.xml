@@ -21,8 +21,12 @@ ON A.PRO_CODE = B.PRO_CODE
 ORDER BY PRO_CODE DESC
 </select>
 
-<select id="detailProduct" parameterType="Integer" resultType="org.oduck.domain.ProductVO">
-SELECT * FROM TBL_PRODUCT WHERE PRO_DELFLAG = 'Y' AND PRO_CODE = #{pro_code}
+<select id="detailProduct" parameterType="Integer" resultType="hashMap">
+SELECT A.PRO_CODE, A.PRO_PRICE, A.PRO_TYPE, A.PRO_DATE, A.SELLER_NAME, A.PRO_WEIGHT, A.PRO_REGDATE, A.PRO_QUANTITY, B.FILE_NAME, B.FILE_NO
+FROM TBL_PRODUCT A
+LEFT OUTER JOIN TBL_FILE B
+ON A.PRO_CODE = B.PRO_CODE
+WHERE A.PRO_CODE = #{pro_code}
 </select>
 
 <insert id="insertProduct" parameterType="org.oduck.domain.ProductVO">

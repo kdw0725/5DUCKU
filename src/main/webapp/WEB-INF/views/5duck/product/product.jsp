@@ -278,9 +278,7 @@ $(document).ready(function(){
         beforeSend : function(xhr){
         },
         success : function(list) {
-        	console.log(list);
-        	console.log(list[1].PRO_PRICE);
-            for(var i=0;i<10;i++){
+            for(var i=0;i<12;i++){
             	productData.pro_code = list[i].PRO_CODE;
             	productData.seller_name = list[i].SELLER_NAME;
             	productData.pro_quantity = list[i].PRO_QUANTITY;

@@ -12,7 +12,7 @@
 						<div class="slick3 gallery-lb">
 							<div class="item-slick3" data-thumb="images/product-detail-01.jpg">
 								<div class="wrap-pic-w pos-relative">
-									<img src="images/product-detail-01.jpg" alt="IMG-PRODUCT">
+									<img src="images/product-detail-01.jpg" alt="IMG-PRODUCT" id="img1">
 
 									<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-01.jpg">
 										<i class="fa fa-expand"></i>
@@ -22,7 +22,7 @@
 
 							<div class="item-slick3" data-thumb="images/product-detail-02.jpg">
 								<div class="wrap-pic-w pos-relative">
-									<img src="images/product-detail-02.jpg" alt="IMG-PRODUCT">
+									<img src="images/product-detail-02.jpg" alt="IMG-PRODUCT" id="img2">
 
 									<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-02.jpg">
 										<i class="fa fa-expand"></i>
@@ -32,7 +32,7 @@
 
 							<div class="item-slick3" data-thumb="images/product-detail-03.jpg">
 								<div class="wrap-pic-w pos-relative">
-									<img src="images/product-detail-03.jpg" alt="IMG-PRODUCT">
+									<img src="images/product-detail-03.jpg" alt="IMG-PRODUCT" id=img3>
 
 									<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-03.jpg">
 										<i class="fa fa-expand"></i>
@@ -332,15 +332,15 @@
 $(document).ready(function(){
 	var productData ={
 			"pro_code" : "${pro_code}",
-			"seller_num" : "",
 			"seller_name" : "", 
 			"pro_quantity" : "",
 			"pro_price" : "",
-			"pro_discount" : "",
 			"pro_type" : "",
-			"pro_status" : "",
+			"pro_weight" : "",
 			"pro_date" : "",
-			"pro_delflag" : ""
+			"pro_delflag" : "",
+			"file_no" : "",
+			"file_name" : ""
 	};
 	
 	$.ajax({
@@ -352,16 +352,23 @@ $(document).ready(function(){
         beforeSend : function(xhr){
         },
         success : function(list) {
-        	productData.pro_code = list.pro_code;
-        	productData.seller_num = list.seller_num;
-        	productData.seller_name = list.seller_name;
-        	productData.pro_quantity = list.pro_quantity;
-        	productData.pro_price = list.pro_price;
-        	productData.pro_discount = list.pro_discount;
-        	productData.pro_type = list.pro_type;
-        	productData.pro_status = list.pro_status;
-        	productData.pro_date = list.pro_date;
-        	productData.pro_ship = list.pro_ship;
+        	productData.pro_code = list[0].PRO_CODE;
+        	productData.seller_num = list[0].SELLER_NUM;
+        	productData.seller_name = list[0].SELLER_NAME;
+        	productData.pro_quantity = list[0].PRO_QUANTITY;
+        	productData.pro_price = list[0].PRO_PRICE;
+        	productData.pro_discount = list[0].PRO_DISCOUNT;
+        	productData.pro_type = list[0].PRO_TYPE;
+        	productData.pro_status = list[0].PRO_STATUS;
+        	productData.pro_date = list[0].PRO_DATE;
+        	productData.pro_ship = list[0].PRO_SHIP;
+        	
+        	
+        	for(var i=1;i<list.length+1;i++){
+        		$("#img"+i).attr("src","/mainresources/upload/"+list[i-1].FILE_NAME);
+        		console.log("들어가냐");
+        	}
+        	
         	
         	var name = document.createElement('div');
         	var price = document.createElement('div');
