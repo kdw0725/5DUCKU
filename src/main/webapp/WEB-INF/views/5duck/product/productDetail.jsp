@@ -8,35 +8,20 @@
 					<div class="wrap-slick3 flex-sb flex-w">
 						<div class="wrap-slick3-dots"></div>
 						<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
-
 						<div class="slick3 gallery-lb">
-							<div class="item-slick3" data-thumb="images/product-detail-01.jpg">
+							<div class="item-slick3" data-thumb="images/product-detail-01.jpg" id="imgdth1">
 								<div class="wrap-pic-w pos-relative">
 									<img src="images/product-detail-01.jpg" alt="IMG-PRODUCT" id="img1">
-
-									<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-01.jpg">
-										<i class="fa fa-expand"></i>
-									</a>
 								</div>
 							</div>
-
-							<div class="item-slick3" data-thumb="images/product-detail-02.jpg">
+							<div class="item-slick3" data-thumb="images/product-detail-02.jpg" id="imgdth2">
 								<div class="wrap-pic-w pos-relative">
 									<img src="images/product-detail-02.jpg" alt="IMG-PRODUCT" id="img2">
-
-									<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-02.jpg">
-										<i class="fa fa-expand"></i>
-									</a>
 								</div>
 							</div>
-
-							<div class="item-slick3" data-thumb="images/product-detail-03.jpg">
+							<div class="item-slick3" data-thumb="images/product-detail-03.jpg" id="imgdth3">
 								<div class="wrap-pic-w pos-relative">
 									<img src="images/product-detail-03.jpg" alt="IMG-PRODUCT" id=img3>
-
-									<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-03.jpg">
-										<i class="fa fa-expand"></i>
-									</a>
 								</div>
 							</div>
 						</div>
@@ -117,8 +102,12 @@
 							</div>
 						</div>
 						<div class="flex-w flex-r-m p-b-10">
-							<h3>최대수량 : </h3>
-						</div>	
+							<h5>
+								최대수량 :	&nbsp<span id="quantityArea" style="float : right;"></span>
+							</h5>
+							<h5 style="float : right;">개</h5>
+						</div>
+<!-- 						<div id="quantityArea"></div> -->
 					</div>
 
 					<!--  -->
@@ -150,12 +139,13 @@
 			<div class="tab01">
 				<!-- Nav tabs -->
 				<ul class="nav nav-tabs" role="tablist">
-					<li class="nav-item p-b-10">
-						<a class="nav-link active" data-toggle="tab" href="#description" role="tab">설명</a>
-					</li>
 
 					<li class="nav-item p-b-10">
-						<a class="nav-link" data-toggle="tab" href="#information" role="tab">제품 정보</a>
+						<a class="nav-link active" data-toggle="tab" href="#information" role="tab">제품 정보</a>
+					</li>
+					
+					<li class="nav-item p-b-10">
+						<a class="nav-link" data-toggle="tab" href="#sellerinfo" role="tab">판매자 정보</a>
 					</li>
 
 					<li class="nav-item p-b-10">
@@ -165,64 +155,54 @@
 
 				<!-- Tab panes -->
 				<div class="tab-content p-t-43">
-					<!-- - -->
-					<div class="tab-pane fade show active" id="description" role="tabpanel">
-						<div class="how-pos2 p-lr-15-md">
-							<p class="stext-102 cl6">
-								Aenean sit amet gravida nisi. Nam fermentum est felis, quis feugiat nunc fringilla sit amet. Ut in blandit ipsum. Quisque luctus dui at ante aliquet, in hendrerit lectus interdum. Morbi elementum sapien rhoncus pretium maximus. Nulla lectus enim, cursus et elementum sed, sodales vitae eros. Ut ex quam, porta consequat interdum in, faucibus eu velit. Quisque rhoncus ex ac libero varius molestie. Aenean tempor sit amet orci nec iaculis. Cras sit amet nulla libero. Curabitur dignissim, nunc nec laoreet consequat, purus nunc porta lacus, vel efficitur tellus augue in ipsum. Cras in arcu sed metus rutrum iaculis. Nulla non tempor erat. Duis in egestas nunc.
-							</p>
-						</div>
-					</div>
 
 					<!-- - -->
-					<div class="tab-pane fade" id="information" role="tabpanel">
+					<div class="tab-pane fade show active" id="information" role="tabpanel">
 						<div class="row">
 							<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
 								<ul class="p-lr-28 p-lr-15-sm">
 									<li class="flex-w flex-t p-b-7">
 										<span class="stext-102 cl3 size-205">
-											Weight
+											무게
 										</span>
 
-										<span class="stext-102 cl6 size-206">
-											0.79 kg
-										</span>
-									</li>
-
-									<li class="flex-w flex-t p-b-7">
-										<span class="stext-102 cl3 size-205">
-											제품상태
-										</span>
-
-										<span class="stext-102 cl6 size-206" id="statusArea">
+										<span class="stext-102 cl6 size-206" id="weightArea">
 										</span>
 									</li>
 
+<!-- 									<li class="flex-w flex-t p-b-7"> -->
+<!-- 										<span class="stext-102 cl3 size-205"> -->
+<!-- 											제품상태 -->
+<!-- 										</span> -->
+
+<!-- 										<span class="stext-102 cl6 size-206" id="statusArea"> -->
+<!-- 										</span> -->
+<!-- 									</li> -->
+
 									<li class="flex-w flex-t p-b-7">
 										<span class="stext-102 cl3 size-205">
-											제품 구입일
+											제품 생산일
 										</span>
 
 										<span class="stext-102 cl6 size-206" id="dateArea">
 										</span>
 									</li>
 
+<!-- 									<li class="flex-w flex-t p-b-7"> -->
+<!-- 										<span class="stext-102 cl3 size-205"> -->
+<!-- 											발송지 -->
+<!-- 										</span> -->
+
+<!-- 										<span class="stext-102 cl6 size-206" id="shipArea"> -->
+<!-- 										</span> -->
+<!-- 									</li> -->
+
 									<li class="flex-w flex-t p-b-7">
 										<span class="stext-102 cl3 size-205">
-											발송지
+											판매자
 										</span>
 
-										<span class="stext-102 cl6 size-206" id="shipArea">
-										</span>
-									</li>
-
-									<li class="flex-w flex-t p-b-7">
-										<span class="stext-102 cl3 size-205">
-											Size
-										</span>
-
-										<span class="stext-102 cl6 size-206">
-											XL, L, M, S
+										<span class="stext-102 cl6 size-206" id="sellerArea">
 										</span>
 									</li>
 								</ul>
@@ -330,6 +310,9 @@
 	
 <script type="text/javascript">
 $(document).ready(function(){
+	
+	
+	
 	var productData ={
 			"pro_code" : "${pro_code}",
 			"seller_name" : "", 
@@ -353,44 +336,77 @@ $(document).ready(function(){
         },
         success : function(list) {
         	productData.pro_code = list[0].PRO_CODE;
-        	productData.seller_num = list[0].SELLER_NUM;
         	productData.seller_name = list[0].SELLER_NAME;
         	productData.pro_quantity = list[0].PRO_QUANTITY;
         	productData.pro_price = list[0].PRO_PRICE;
-        	productData.pro_discount = list[0].PRO_DISCOUNT;
         	productData.pro_type = list[0].PRO_TYPE;
-        	productData.pro_status = list[0].PRO_STATUS;
-        	productData.pro_date = list[0].PRO_DATE;
+        	productData.pro_weight = list[0].PRO_WEIGHT;
+        	productData.pro_date = timeConvert(list[0].PRO_DATE);
         	productData.pro_ship = list[0].PRO_SHIP;
         	
-        	
+        	alert(productData.pro_date);
         	for(var i=1;i<list.length+1;i++){
         		$("#img"+i).attr("src","/mainresources/upload/"+list[i-1].FILE_NAME);
+        		$("#imgdth"+i).attr("data-thumb","/mainresources/upload/"+list[i-1].FILE_NAME)
         		console.log("들어가냐");
         	}
-        	
         	
         	var name = document.createElement('div');
         	var price = document.createElement('div');
         	var date = document.createElement('div');
-        	var status = document.createElement('div');
-        	var ship = document.createElement('div');
+        	var quantity = document.createElement('div');
+        	var seller = document.createElement('div');
+        	var weight = document.createElement('div');
         	
         	name.innerHTML = productData.pro_type;
         	price.innerHTML = '￦'+productData.pro_price;
         	date.innerHTML =  productData.pro_date;
-        	status.innerHTML = productData.pro_status;
-        	ship.innerHTML = productData.pro_ship;
+        	quantity.innerHTML = productData.pro_quantity;
+        	seller.innerHTML = productData.seller_name;
+        	weight.innerHTML = productData.pro_weight+'kg';
         	
         	document.getElementById('nameArea').appendChild(name);
         	document.getElementById('priceArea').appendChild(price);
         	document.getElementById('dateArea').appendChild(date);
-        	document.getElementById('statusArea').appendChild(status);
-        	document.getElementById('shipArea').appendChild(ship);
+        	document.getElementById('quantityArea').appendChild(quantity);
+        	document.getElementById('sellerArea').appendChild(seller);
+        	document.getElementById('weightArea').appendChild(weight);
         },
         error : function(error){
         	alert(error);
         }
 	});
+	
+	$('.wrap-slick3').each(function(){
+        $(this).find('.slick3').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            fade: true,
+            infinite: true,
+            autoplay: false,
+            autoplaySpeed: 6000,
+
+            arrows: true,
+            appendArrows: $(this).find('.wrap-slick3-arrows'),
+            prevArrow:'<button class="arrow-slick3 prev-slick3"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
+            nextArrow:'<button class="arrow-slick3 next-slick3"><i class="fa fa-angle-right" aria-hidden="true"></i></button>',
+
+            dots: true,
+            appendDots: $(this).find('.wrap-slick3-dots'),
+            dotsClass:'slick3-dots',
+            customPaging: function(slick, index) {
+                var portrait = $(slick.$slides[index]).data('thumb');
+                return '<img src=" ' + portrait + ' "/><div class="slick3-dot-overlay"></div>';
+            },  
+        });
+    });
 });
+
+function timeConvert(t){
+	var date = new Date(t);
+	var year = date.getFullYear();
+	var month = "0" + (date.getMonth()+1);
+	var day = "0" + date.getDate()
+	return year + "-" + month.substr(-2) + "-" + day.substr(-2);
+}
 </script>
