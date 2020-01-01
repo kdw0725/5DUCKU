@@ -2500,6 +2500,11 @@ input.num-product::-webkit-inner-spin-button {
   height: 50px;
 }
 
+.size-116-2{
+	width : 50%;
+	height : 50px;
+}
+
 .size-117 {
   width: 220px;
   height: 45px;
@@ -3374,4 +3379,79 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .filePlus{
 	margin-top : 5px;
+}
+
+#checkBox {
+  position: relative;
+  top: -0.2rem;
+  margin: 0 1rem 0 0;
+  cursor: pointer;
+}
+#checkBox:before {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  content: "";
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid #f2f2f2;
+}
+#checkBox:checked:before {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  height: .5rem;
+  border-color: #009688;
+  border-top-style: none;
+  border-right-style: none;
+}
+#checkBox:after {
+  content: "";
+  position: absolute;
+  top: -0.125rem;
+  left: 0;
+  width: 1.1rem;
+  height: 1.1rem;
+  background: #fff;
+  cursor: pointer;
+}
+
+@-webkit-keyframes slideUp {
+  0% {
+    -webkit-transform: translateY(6.25rem);
+    transform: translateY(6.25rem);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+@keyframes slideUp {
+  0% {
+    -webkit-transform: translateY(6.25rem);
+    transform: translateY(6.25rem);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+.bar{
+	background-color: #e5e5e5;
+	width : 1px;
+	margin-left: 10px;
+	margin-right: 10px;
+	display: inline-block;
+	text-indent: -999em;
+}
+
+.accessError{
+	text-align: center;
+	margin-bottom: 20px;
 }

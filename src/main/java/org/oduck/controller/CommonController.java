@@ -13,36 +13,16 @@ import lombok.extern.log4j.Log4j;
 @Controller
 @RequestMapping("/*")
 public class CommonController {
+	
+	@GetMapping("/logIn")
+	public String logIn() throws Exception{
+		return "5duck/member/logIn.tiles";
+	}
+	
 	@GetMapping("/accessError")
-	public void accessDenied(Authentication auth, Model model) {
+	public String accessDenied(Authentication auth, Model model) {
 		log.info("access Denied : "+ auth);
-		model.addAttribute("msg", "Access Denied");
+		return "5duck/member/accessError.tiles";
 	}
 	
-	//로그인
-	@GetMapping("/customLogin")
-	public void loginInput(String error, String logout, Model model) {
-		log.info("error : " + error);
-		log.info("logout : " + logout);
-		
-		if(error != null) {
-			model.addAttribute("error", "Login Error Check Your Account");
-		}    
-		
-		if(logout != null) {
-			model.addAttribute("logout", "Logout");
-		}
-	}
-	
-	//로그아웃
-	@GetMapping("/customLogout")
-	public void logoutGET() {
-		log.info("custom logout");
-	}
-	
-	//로그아웃
-	@PostMapping("/customLogout")
-	public void logoutPost() {
-		log.info("post custom logout");
-	}
 }
