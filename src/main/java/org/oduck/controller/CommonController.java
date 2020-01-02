@@ -25,4 +25,9 @@ public class CommonController {
 		return "5duck/member/accessError.tiles";
 	}
 	
+	@GetMapping("/error404")
+	public String error404() {
+		return "5duck/404.tiles";
+	}
+	
 }
