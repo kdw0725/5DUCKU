@@ -9,7 +9,7 @@
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			<input type="hidden" name="seller_name" value="kdw">
 			<div style = "width : 30%; float: left; text-align: center; vertical-align: middle;">
-				<h5>제품명</h5>
+				<h5 class="m-t-9">제품명</h5>
 			</div>
 			<div style = "width : 70%; float: right;">
 				<input type="text" class="size-111 bor8 p-lr-20" name="pro_type" placeholder="제품명">
@@ -19,7 +19,7 @@
 		<div class="row" style="margin-bottom: 30px;">
 			<input type="hidden" name="seller_name" value="kdw">
 			<div style = "width : 30%; float: left; text-align: center; vertical-align: middle;">
-				<h5>제품 가격</h5>
+				<h5 class="m-t-9">제품 가격</h5>
 			</div>
 			<div style = "width : 70%; float: right;">
 				<input type="number" class="size-111 bor8 p-lr-20" name="pro_price" placeholder="제품 가격">
@@ -32,7 +32,7 @@
 		<div class="row" style="margin-bottom: 30px;">
 			<input type="hidden" name="seller_name" value="kdw">
 			<div style = "width : 30%; float: left; text-align: center; vertical-align: middle;">
-				<h5>최대 수량</h5>
+				<h5 class="m-t-9">최대 수량</h5>
 			</div>
 			<div style = "width : 70%; float: right;">
 				<input type="number" class="size-111 bor8 p-lr-20" name="pro_quantity" placeholder="최대 수량">
@@ -44,7 +44,7 @@
 		
 		<div class="row" style="margin-bottom: 30px;">
 			<div style = "width : 30%; float: left; text-align: center; vertical-align: middle;">
-				<h5>제품 생산일</h5>
+				<h5 class="m-t-9">제품 생산일</h5>
 			</div>
 			<div style = "width : 70%; float: right;">
 				<input type="text" class="size-111 bor8 p-lr-20" name="pro_date" placeholder="제품 생산일" id="daterangepicker">
@@ -53,7 +53,7 @@
 		
 		<div class="row" style="margin-bottom: 30px;">
 			<div style = "width : 30%; float: left; text-align: center; vertical-align: middle;">
-				<h5>상품 무게</h5>
+				<h5 class="m-t-9">상품 무게</h5>
 			</div>
 			<div style = "width : 70%; float: right;">
 				<input type="number" class="size-111 bor8 p-lr-20" name="pro_weight" placeholder="제품 무게(kg)">
@@ -62,7 +62,7 @@
 		
 		<div class="row" style="margin-bottom: 30px;">
 			<div style = "width : 30%; float: left; text-align: center; vertical-align: middle;">
-				<h5>제품 사진</h5>
+				<h5 class="m-t-9">제품 사진</h5>
 			</div>
 			<div style = "width : 70%; float: right;">
 				<div class="fileInput">

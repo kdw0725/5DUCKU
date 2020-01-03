@@ -30,4 +30,8 @@ public class CommonController {
 		return "5duck/404.tiles";
 	}
 	
+	@GetMapping("/signIn")
+	public String signIn() {
+		return "5duck/member/signIn.tiles";
+	}
 }
