@@ -1,3 +1,43 @@
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
+<!-- Topbar -->
+<div class="top-bar">
+	<div class="content-topbar flex-sb-m h-full container">
+		<div class="left-top-bar">
+			피규어 쇼핑몰 ODUCKU입니다.
+		</div>
+
+		<div class="right-top-bar flex-w h-full">
+			<sec:authorize access="isAuthenticated()">
+				<p class="flex-c-m trans-04 p-lr-25"><sec:authentication property="principal.username"/>님, 반갑습니다.</p>
+				<a href="#" onclick="document.getElementById('logout-form').submit();" class="flex-c-m trans-04 p-lr-25">로그아웃</a>
+			    <form id="logout-form" action='<c:url value='/logout'/>' method="POST">
+				   <input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
+				 </form>
+				 <a href="#" class="flex-c-m trans-04 p-lr-25">
+					마이페이지
+				</a>
+			</sec:authorize>
+
+			<sec:authorize access="isAnonymous()">
+			   <a href="/logIn" class="flex-c-m trans-04 p-lr-25">
+					로그인
+				</a>
+	
+				<a href="/signIn" class="flex-c-m trans-04 p-lr-25">
+					회원가입
+				</a>
+			</sec:authorize>
+
+			<a href="#" class="flex-c-m trans-04 p-lr-25">
+				고객센터
+			</a>
+		</div>
+	</div>
+</div>
+
 <!-- Header -->
 <header class="header-v4">
 	<!-- Header desktop -->

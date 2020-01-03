@@ -7,7 +7,7 @@
 <!-- 	</h2> -->
 <!-- </section>  -->
 <section class="bg0 p-t-304 p-b-116">
-	<div class="bg0 m-t-150 p-b-140">
+	<div class="bg0 p-b-140">
 		<div class="container">
 			<div class="flex-w flex-tr">
 				<div class="size-210 bor10 p-lr-70 p-t-150 p-b-150 p-lr-15-lg w-full-md">

@@ -20,7 +20,7 @@ jQuery.browser = {};
 </script>
 <!-- css -->
 <tiles:insertAttribute name="css" /> 
-<title>5DUCKU</title> 
+<title>5DUCKU</title>
 </head> 
 <body>
 		<!-- nav  -->
