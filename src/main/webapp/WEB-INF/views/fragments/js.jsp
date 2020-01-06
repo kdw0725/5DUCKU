@@ -118,5 +118,8 @@
 	    });
 	});	
 	</script>
+	<!-- 	주소 검색 api -->
+	<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+	
 	
 	 

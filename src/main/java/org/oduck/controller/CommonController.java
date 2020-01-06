@@ -34,4 +34,9 @@ public class CommonController {
 	public String signIn() {
 		return "5duck/member/signIn.tiles";
 	}
+	
+	@PostMapping("signInDo")
+	public String signInDo(){
+		return null;
+	}
 }

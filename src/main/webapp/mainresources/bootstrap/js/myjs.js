@@ -156,3 +156,6 @@ function tel(obj){
 	    }
 	    obj.value = phone;
 }
+$(function() { 
+	$("#postcodify_search_button").postcodifyPopUp(); 
+}); 
