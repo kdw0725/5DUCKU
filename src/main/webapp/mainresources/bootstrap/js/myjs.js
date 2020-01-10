@@ -159,3 +159,7 @@ function tel(obj){
 $(function() { 
 	$("#postcodify_search_button").postcodifyPopUp(); 
 }); 
+
+function noBlank(){
+	if(event.keyCode == 32) event.returnValue = false;
+}
