@@ -3,9 +3,25 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.oduck.mapper.MemberMapper">
+
 <select id="idCheck" parameterType="String" resultType="Integer">
 SELECT COUNT(MEMBER_ID) 
 FROM TBL_MEMBER 
 WHERE MEMBER_ID = #{member_id}
 </select>
+
+<select id="readUser" parameterType="String" resultType="org.oduck.domain.MemberVO">
+SELECT
+*
+FROM TBL_MEMBER
+WHERE
+MEMBER_ID = #{member_id}
+</select>
+
+<select id="readAuthority" parameterType="String" resultType="String">
+SELECT MEMBER_ROLE
+FROM TBL_MEMBER
+WHERE MEMBER_ID = #{member_id}
+</select>
+
 </mapper>
