@@ -24,4 +24,10 @@ FROM TBL_MEMBER
 WHERE MEMBER_ID = #{member_id}
 </select>
 
+<insert id="signIn" parameterType="org.oduck.domain.MemberVO">
+INSERT INTO 
+TBL_MEMBER(MEMBER_NUM, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_ADDR_NUM, MEMBER_ADDR, MEMBER_ADDR_DETAIL, MEMBER_PNUM, MEMBER_EMAIL)
+VALUES(SEQ_MEMBER.NEXTVAL, #{member_id}, #{member_pw}, #{member_name}, #{member_addr_num}, #{member_addr}, #{member_addr_detail}, #{member_pnum}, #{member_email})
+</insert>
+
 </mapper>

@@ -10,7 +10,7 @@
 					<form action="/signInDo" method="post" id="signInForm">
 						<div class="bor8 m-b-20 p-tb-1 how-pos4-parent">
 							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-							<input type="text" class="stext-111 cl2 plh3 size-116 p-l-30 p-r-30" placeholder="이름" required="required" onKeypress = "noBlank()">
+							<input name="member_name" type="text" class="stext-111 cl2 plh3 size-116 p-l-30 p-r-30" placeholder="이름" required="required" onKeypress = "noBlank()">
 						</div>
 						<div class="bor8 m-b-20 p-tb-1 how-pos4-parent">
 							<input name="member_id" type="text" class="stext-111 cl2 plh3 size-116 p-l-30 p-r-30" placeholder="아이디" required="required" onKeypress = "noBlank()" maxlength="19">
@@ -21,29 +21,28 @@
 						</div>
 						<div class="bor8 m-b-20 p-tb-1 how-pos4-parent">
 							<input type="password" class="stext-111 cl2 plh3 size-116 p-l-30 p-r-30" placeholder="비밀번호 확인" autocomplete="off" required="required" onKeypress = "noBlank()" id="pwCheck">
-							
 						</div>
 						<p id="pwCheckResult"></p>
 						<div class="bor8 m-b-20 p-tb-1 how-pos4-parent">
-							<input type="tel" class="stext-111 cl2 plh3 size-116 p-l-30 p-r-30" placeholder="전화번호" onkeyup="tel(this)" required="required" onKeypress = "noBlank()">
+							<input name="member_pnum" type="tel" class="stext-111 cl2 plh3 size-116 p-l-30 p-r-30" placeholder="전화번호" onkeyup="tel(this)" required="required" onKeypress = "noBlank()">
 						</div>
 						<div class="bor8 m-b-20 p-tb-1 how-pos4-parent">
-							<input type="email" class="stext-111 cl2 plh3 size-116 p-l-30 p-r-30" placeholder="이메일" required="required" onKeypress = "noBlank()">
+							<input name="member_email" type="email" class="stext-111 cl2 plh3 size-116 p-l-30 p-r-30" placeholder="이메일" required="required" onKeypress = "noBlank()">
 						</div>
 						<!--주소검색 -->
 						<div style="display: flex;">
 							<div class="bor8 m-b-20 p-tb-1 size-116-2 how-pos4-parent">
-								<input type="text" name="" class="stext-111 cl2 plh3 size-116 p-l-30 p-r-30" value="" placeholder="우편번호" style="height: -webkit-fill-available;" readonly="readonly" required="required" id="sample4_postcode"/>
+								<input name="member_addr_num" type="text" class="stext-111 cl2 plh3 size-116 p-l-30 p-r-30" value="" placeholder="우편번호" style="height: -webkit-fill-available;" readonly="readonly" required="required" id="sample4_postcode"/>
 							</div>
 							<div class="m-b-20 p-tb-1 size-116-2  how-pos4-parent m-l-10">						 
 								<button type="button" class="flex-c-m stext-101 cl3 size-116-2 bg2 bor1 hov-btn4 p-lr-15 trans-04 pointer" onclick="sample4_execDaumPostcode()">검색</button>
 							</div>
 						</div>
 						<div class="bor8 m-b-20 p-tb-1 how-pos4-parent">
-							<input type="text" name="" class="stext-111 cl2 plh3 size-116 p-l-30 p-r-30" value="" placeholder="주소" readonly="readonly" required="required" id="sample4_roadAddress"/>
+							<input name="member_addr" type="text" class="stext-111 cl2 plh3 size-116 p-l-30 p-r-30" value="" placeholder="주소" readonly="readonly" required="required" id="sample4_roadAddress"/>
 						</div>
 						<div class="bor8 m-b-20 p-tb-1 how-pos4-parent">
-							<input type="text" name="" class="stext-111 cl2 plh3 size-116 p-l-30 p-r-30" value="" placeholder="상세주소" required="required" id="sample4_detailAddress"/>
+							<input name="member_addr_detail" type="text" class="stext-111 cl2 plh3 size-116 p-l-30 p-r-30" value="" placeholder="상세주소" required="required" id="sample4_detailAddress"/>
 						</div>
 						
 						<input type="checkbox" id="checkBox" style="float : left;">
@@ -142,6 +141,7 @@ $(document).ready(function(){
 			var form = document.getElementById('signInForm');
 			if(form.checkValidity()){
 				form.submit();
+				alert('break');
 			}else{
 				alert('항목을 확인하여주세요.');
 			}

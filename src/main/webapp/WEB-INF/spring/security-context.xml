@@ -27,11 +27,11 @@
 
 	<security:authentication-manager>
 		<security:authentication-provider user-service-ref="userService">
-<!-- 			<security:user-service > -->
-<!-- 				<security:user name="kdw" password="{noop}rlaehddnr12" authorities="ROLE_USER"/> -->
-<!-- 			</security:user-service> -->
+			<security:password-encoder ref="bcryptPasswordEncoder"/>
 		</security:authentication-provider>
 	</security:authentication-manager>
 	
 	<bean id="userService" class="org.oduck.security.CustomUserDetailService"/>
+	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />  
+	
 </beans>

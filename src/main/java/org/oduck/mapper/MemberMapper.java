@@ -8,4 +8,5 @@ public interface MemberMapper {
 	public int idCheck(String member_id);
 	public MemberVO readUser(String member_id);
 	public List<String> readAuthority(String member_id);
+	public int signIn(MemberVO member_vo);
 }

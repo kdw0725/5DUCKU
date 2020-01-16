@@ -4,10 +4,10 @@ import org.oduck.domain.MemberVO;
 import org.oduck.mapper.MemberMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +22,10 @@ public class MemberController {
 	
 	@Autowired
 	MemberMapper memberMapper;
+	
+	@Autowired
+	BCryptPasswordEncoder passEncoder;
+
 	
 	@GetMapping("/logIn")
 	public String logIn() throws Exception{
@@ -45,8 +49,13 @@ public class MemberController {
 	}
 	
 	@PostMapping("/signInDo")
-	public String signInDo(){
-		return null;
+	public String signInDo(MemberVO vo){
+		vo.setMember_pw(passEncoder.encode(vo.getMember_pw()));
+		System.out.println(vo.toString());
+		memberMapper.signIn(vo);
+		log.info("signIn : "+vo.getMember_id());
+		return "redirect:/";
+		
 	}
 	
 	@PostMapping("/idCheck")
