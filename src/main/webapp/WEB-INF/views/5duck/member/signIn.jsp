@@ -13,14 +13,14 @@
 							<input name="member_name" type="text" class="stext-111 cl2 plh3 size-116 p-l-30 p-r-30" placeholder="이름" required="required" onKeypress = "noBlank()">
 						</div>
 						<div class="bor8 m-b-20 p-tb-1 how-pos4-parent">
-							<input name="member_id" type="text" class="stext-111 cl2 plh3 size-116 p-l-30 p-r-30" placeholder="아이디" required="required" onKeypress = "noBlank()" maxlength="19">
+							<input name="member_id" type="text" class="stext-111 cl2 plh3 size-116 p-l-30 p-r-30" placeholder="아이디" required="required" onKeypress = "noBlank()" maxlength="15">
 							<button id="idCheck" type="button" class="flex-c-m stext-101 cl3 size-112 bg2 bor1 hov-btn4 p-lr-15 m-t-10 trans-04 pointer" style="position: absolute; top: -6px; right: 1%; border-radius: 15px;">중복확인</button>
 						</div>
 						<div class="bor8 m-b-20 p-tb-1 how-pos4-parent">
-							<input name="member_pw" type="password" class="stext-111 cl2 plh3 size-116 p-l-30 p-r-30" placeholder="비밀번호" autocomplete="off" required="required" onKeypress = "noBlank()">
+							<input name="member_pw" type="password" class="stext-111 cl2 plh3 size-116 p-l-30 p-r-30" placeholder="비밀번호" autocomplete="off" required="required" onKeypress = "noBlank()" maxlength="19">
 						</div>
 						<div class="bor8 m-b-20 p-tb-1 how-pos4-parent">
-							<input type="password" class="stext-111 cl2 plh3 size-116 p-l-30 p-r-30" placeholder="비밀번호 확인" autocomplete="off" required="required" onKeypress = "noBlank()" id="pwCheck">
+							<input type="password" class="stext-111 cl2 plh3 size-116 p-l-30 p-r-30" placeholder="비밀번호 확인" autocomplete="off" required="required" onKeypress = "noBlank()" id="pwCheck" maxlength="19">
 						</div>
 						<p id="pwCheckResult"></p>
 						<div class="bor8 m-b-20 p-tb-1 how-pos4-parent">
@@ -69,10 +69,20 @@ $(document).ready(function(){
 	var pwChecked = 0;
 	var termChecked = 0;
 	
+	$('input[name=member_name]').on('keyup',function(){
+		this.value=this.value.replace(/[^ㄱ-ㅎㅏ-ㅣ-가-힣]/gi,'')
+	});
+	
 	$('input[name=member_id]').on('keyup',function(){
 		idChecked = 0;
 		this.value=this.value.replace(/[^a-z0-9]/gi,'')
 	});
+	
+	$('input[name=member_pnum]').on('keyup',function(){
+		this.value=this.value.replace(/[^0-9\-]/gi,'')
+
+	});
+
 	
 	$('#pwCheck').on('keyup',function(){
 		var pw = $('input[name=member_pw]').val();
@@ -137,11 +147,9 @@ $(document).ready(function(){
 	
 	$('#formSubmit').on('click', function(){
 		if(idChecked==1 && pwChecked==1 && termChecked==1){
-			alert('제출');
 			var form = document.getElementById('signInForm');
 			if(form.checkValidity()){
 				form.submit();
-				alert('break');
 			}else{
 				alert('항목을 확인하여주세요.');
 			}

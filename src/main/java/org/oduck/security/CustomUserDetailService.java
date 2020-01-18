@@ -22,7 +22,10 @@ public class CustomUserDetailService implements UserDetailsService{
 		MemberVO membervo = memberMapper.readUser(member_id);
 		if(membervo != null) {
 			membervo.setAuthorities(makeGrantedAuthority(memberMapper.readAuthority(member_id)));
-        }
+		}else {
+			throw new UsernameNotFoundException(member_id);
+
+		}
 		return new SecurityMemberVO(membervo);
 	}
 	
