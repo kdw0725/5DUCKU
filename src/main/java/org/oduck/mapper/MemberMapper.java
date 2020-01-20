@@ -9,4 +9,5 @@ public interface MemberMapper {
 	public MemberVO readUser(String member_id);
 	public List<String> readAuthority(String member_id);
 	public int signIn(MemberVO member_vo);
+	public String findID(MemberVO member_vo);
 }

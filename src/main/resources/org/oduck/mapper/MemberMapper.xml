@@ -30,4 +30,10 @@ TBL_MEMBER(MEMBER_NUM, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_ADDR_NUM, MEMBE
 VALUES(SEQ_MEMBER.NEXTVAL, #{member_id}, #{member_pw}, #{member_name}, #{member_addr_num}, #{member_addr}, #{member_addr_detail}, #{member_pnum}, #{member_email})
 </insert>
 
+<select id="findID" parameterType="org.oduck.domain.MemberVO" resultType="String">
+SELECT MEMBER_ID 
+FROM TBL_MEMBER
+WHERE MEMBER_NAME =  #{member_name} AND MEMBER_PNUM = #{member_pnum}
+</select>
+
 </mapper>

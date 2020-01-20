@@ -188,5 +188,43 @@ function noBlank(){
 }
 function noKorean(obj){
 	obj.value = obj.value.replace(/{^a-z0-9]/gi,"");
+}
+
+function findID(){
+	var member_name = $('input[name="member_name"]').val();
+	var member_pnum = $('input[name="member_pnum"]').val();
+	
+	if(member_name != '' && member_pnum !=''){
+		alert('hi');
+		var formData = {
+				"member_name" : member_name,
+				"member_pum" : member_pnum
+		};
+		var csrfHeaderName = "${_csrf.headerName}";
+		var csrfTokenValue = "${_csrf.token}";
+		
+		$.ajax({
+			type : 'POST',
+			url : '/findIdDo',
+			data : JSON.stringify(formData),
+			dataType : 'json',
+			contentType : "application/json; charset=utf-8",
+			beforesend : function(xhr){
+				  xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+			},
+			success : function(result){
+				
+			},
+			error : function(request,status,error){
+			    alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			}
+		});
+	}else if(member_name == ''){
+		alert('이름을 입력해주시기 바랍니다.');
+	}else if(member_pnum == ''){
+		alert('전화번호를 입력해주세요.');
+	}
+	
+	
 	
 }

@@ -63,5 +63,15 @@ public class MemberController {
 	public int idCheck(@RequestBody MemberVO vo) {
 		return memberMapper.idCheck(vo.getMember_id());
 	}
+	
+	@GetMapping("/findID")
+	public String findID() {
+		return "5duck/member/findID.tiles";
+	}
+	
+	@GetMapping("/findPW")
+	public String findPW() {
+		return "5duck/member/findPW.tiles";
+	}
 
 }

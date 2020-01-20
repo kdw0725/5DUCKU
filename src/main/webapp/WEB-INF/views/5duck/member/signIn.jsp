@@ -80,7 +80,6 @@ $(document).ready(function(){
 	
 	$('input[name=member_pnum]').on('keyup',function(){
 		this.value=this.value.replace(/[^0-9\-]/gi,'')
-
 	});
 
 	
@@ -111,7 +110,6 @@ $(document).ready(function(){
 	
 	$('#idCheck').on('click', function(){
 		var id = $('input[name=member_id]').val();
-		alert(id.length);
 		if(id.length > 3 && id.length < 20){
 			var idData = {member_id : id};
 			$.ajax({
