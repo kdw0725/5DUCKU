@@ -1,5 +1,7 @@
 package org.oduck.controller;
 
+import java.util.HashMap;
+
 import org.oduck.domain.MemberVO;
 import org.oduck.mapper.MemberMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,6 +69,13 @@ public class MemberController {
 	@GetMapping("/findID")
 	public String findID() {
 		return "5duck/member/findID.tiles";
+	}
+	
+	@PostMapping("/findID.do")
+	@ResponseBody
+	public String findIdDo(MemberVO vo) {
+		System.out.println(vo.toString());
+		return "success";
 	}
 	
 	@GetMapping("/findPW")

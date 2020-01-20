@@ -195,25 +195,27 @@ function findID(){
 	var member_pnum = $('input[name="member_pnum"]').val();
 	
 	if(member_name != '' && member_pnum !=''){
-		alert('hi');
+		alert(member_name);
+		alert(member_pnum);
 		var formData = {
 				"member_name" : member_name,
-				"member_pum" : member_pnum
+				"member_pnum" : member_pnum
 		};
 		var csrfHeaderName = "${_csrf.headerName}";
 		var csrfTokenValue = "${_csrf.token}";
 		
 		$.ajax({
 			type : 'POST',
-			url : '/findIdDo',
-			data : JSON.stringify(formData),
-			dataType : 'json',
+			url : '/findID.do',
+//			data : JSON.stringify(formData),
+			data : formData,
+			dataType : 'text',
 			contentType : "application/json; charset=utf-8",
 			beforesend : function(xhr){
 				  xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
 			},
 			success : function(result){
-				
+				alert(result);
 			},
 			error : function(request,status,error){
 			    alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
