@@ -195,8 +195,6 @@ function findID(){
 	var member_pnum = $('input[name="member_pnum"]').val();
 	
 	if(member_name != '' && member_pnum !=''){
-		alert(member_name);
-		alert(member_pnum);
 		var formData = {
 				"member_name" : member_name,
 				"member_pnum" : member_pnum
@@ -205,7 +203,7 @@ function findID(){
 		var csrfTokenValue = "${_csrf.token}";
 		
 		$.ajax({
-			type : 'POST',
+			type : 'GET',
 			url : '/findID.do',
 //			data : JSON.stringify(formData),
 			data : formData,
@@ -215,7 +213,24 @@ function findID(){
 				  xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
 			},
 			success : function(result){
-				alert(result);
+				if(result == ''){
+					alert('가입이 되어있지 않은 사용자입니다.');
+				}
+				else{
+					$("#findIdArea").empty();
+					var div = document.createElement('div');
+					div.innerHTML = '\
+						<div class="m-b-20 how-pos4-parent">\
+							<h2 style = "text-align : center;">고객님의 아이디는</h2>\
+						</div>\
+						<div class="m-b-20 how-pos4-parent">\
+							<h2 style = "text-align : center;">\''+result+'\'입니다.</h2>\
+						</div>\
+						<button type = "button" class="flex-c-m stext-101 cl0 size-121 bg1 bor1 hov-btn1 p-lr-15 m-t-40 trans-04 pointer" onclick="location.href=\'/logIn\'">로그인</button>\
+						';
+					document.getElementById('findIdArea').appendChild(div);
+				}
+				
 			},
 			error : function(request,status,error){
 			    alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);

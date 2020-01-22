@@ -10,9 +10,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.extern.log4j.Log4j;
@@ -71,11 +73,10 @@ public class MemberController {
 		return "5duck/member/findID.tiles";
 	}
 	
-	@PostMapping("/findID.do")
+	@GetMapping("/findID.do")
 	@ResponseBody
 	public String findIdDo(MemberVO vo) {
-		System.out.println(vo.toString());
-		return "success";
+		return memberMapper.findID(vo);
 	}
 	
 	@GetMapping("/findPW")
