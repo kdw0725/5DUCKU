@@ -36,4 +36,19 @@ FROM TBL_MEMBER
 WHERE MEMBER_NAME =  #{member_name} AND MEMBER_PNUM = #{member_pnum}
 </select>
 
+<select id="findInfo" parameterType="org.oduck.domain.MemberVO" resultType="org.oduck.domain.MemberVO">
+SELECT MEMBER_NUM, MEMBER_EMAIL, MEMBER_PW
+FROM TBL_MEMBER
+WHERE MEMBER_NAME = #{member_name} AND MEMBER_PNUM = #{member_pnum} AND MEMBER_ID = #{member_id}
+</select>
+
+<update id="tmpPw" parameterType="org.oduck.domain.MemberVO">
+UPDATE
+TBL_MEMBER
+SET
+MEMBER_PW = #{member_pw}
+WHERE
+MEMBER_NUM = #{member_num}
+</update>
+
 </mapper>

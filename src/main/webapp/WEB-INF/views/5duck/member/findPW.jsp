@@ -35,8 +35,10 @@ $(document).ready(function(){
 		this.value=this.value.replace(/[^0-9\-]/gi,'')
 	});
 	$('input[name=member_id]').on('keyup',function(){
-		idChecked = 0;
 		this.value=this.value.replace(/[^a-z0-9]/gi,'')
+	});
+	$('#findPw').on('click', function(){
+		findPw();
 	});
 });
 

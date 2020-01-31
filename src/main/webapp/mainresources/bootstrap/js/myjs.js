@@ -241,7 +241,49 @@ function findID(){
 	}else if(member_pnum == ''){
 		alert('전화번호를 입력해주세요.');
 	}
+}
+
+function findPw(){
+	var member_name = $('input[name="member_name"]').val();
+	var member_id = $('input[name="member_id"]').val();
+	var member_pnum = $('input[name="member_pnum"]').val();
 	
 	
-	
+	if(member_name != '' && member_pnum !='' && member_id!=''){
+		var formData = {
+				"member_name" : member_name,
+				"member_id" : member_id,
+				"member_pnum" : member_pnum
+		};
+		var csrfHeaderName = "${_csrf.headerName}";
+		var csrfTokenValue = "${_csrf.token}";
+		$.ajax({
+			type : 'POST',
+			url : '/findPW.do',
+			data : JSON.stringify(formData),
+//			data : formData,
+			dataType : 'json',
+			contentType : "application/json; charset=utf-8",
+			beforesend : function(xhr){
+				  xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+			},
+			success : function(result){
+				if(result == 0){
+					alert('등록되어있지 않은 사용자 입니다.');
+				}
+				else{
+					alert('가입시 사용하였던 이메일로 임시 비밀번호를 전송하였습니다.');
+				}
+			},
+			error : function(request,status,error){
+			    alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			}
+		});
+	}else if(member_name == ''){
+		alert('이름을 입력해주시기 바랍니다.');
+	}else if(member_id == ''){
+		alert('아이디 확인해주세요.');
+	}else if(member_pnum == ''){
+		alert('전화번호를 입력해주세요.');
+	}
 }

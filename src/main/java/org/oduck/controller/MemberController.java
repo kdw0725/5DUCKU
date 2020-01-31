@@ -1,20 +1,21 @@
 package org.oduck.controller;
 
-import java.util.HashMap;
+import javax.mail.internet.MimeMessage;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.oduck.domain.MemberVO;
 import org.oduck.mapper.MemberMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.extern.log4j.Log4j;
@@ -26,9 +27,13 @@ public class MemberController {
 	
 	@Autowired
 	MemberMapper memberMapper;
-	
 	@Autowired
 	BCryptPasswordEncoder passEncoder;
+	@Autowired
+	JavaMailSender mailSender;
+	
+	
+	
 
 	
 	@GetMapping("/logIn")
@@ -83,5 +88,49 @@ public class MemberController {
 	public String findPW() {
 		return "5duck/member/findPW.tiles";
 	}
+	
+	@PostMapping("/findPW.do")
+	@ResponseBody
+	public int findPwDo(@RequestBody MemberVO vo) {
+		MemberVO memberinfo = memberMapper.findInfo(vo);
+		if(memberinfo == null) {
+			return 0;
+		}
+		else {
+			String tmpPw = RandomStringUtils .randomAlphanumeric(12);
+			memberinfo.setMember_pw(passEncoder.encode(tmpPw));
+			memberMapper.tmpPw(memberinfo);
+			System.out.println(tmpPw);
+			System.out.println(memberinfo.toString());
+			
+			String setFrom = "kimaron0725@gmail.com";
+			String toMail = memberinfo.getMember_email();
+			String title = "임시비밀번호 발급 이메일 입니다.";
+			String content = 
+					System.getProperty("line.separator")+
+					System.getProperty("line.separator")+
+					"안녕하세요 회원님 저희 홈페이지를 찾아주셔서 감사합니다."
+					+System.getProperty("line.separator")+
+					System.getProperty("line.separator")+
+					"임시 비밀번호는"+tmpPw+"입니다."
+					+System.getProperty("line.separator")+
+					System.getProperty("line.separator")+
+					"로그인 후 내정보 보기 > 비밀번호 수정을 부탁드립니다.";
+			try {
+				MimeMessage message = mailSender.createMimeMessage();
+				MimeMessageHelper messageHelper = new MimeMessageHelper(message,true,"UTF-8");
+				messageHelper.setFrom(setFrom);
+				messageHelper.setTo(toMail);
+				messageHelper.setSubject(title);
+				messageHelper.setText(content);
+				mailSender.send(message);
+			} catch(Exception e) {
+				System.out.println(e);
+			}
+			return 1;
+		}
+	}
+	
+	
 
 }

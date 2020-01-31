@@ -10,4 +10,6 @@ public interface MemberMapper {
 	public List<String> readAuthority(String member_id);
 	public int signIn(MemberVO member_vo);
 	public String findID(MemberVO member_vo);
+	public MemberVO findInfo(MemberVO member_vo);
+	public int tmpPw(MemberVO member_vo);
 }
